@@ -27,3 +27,10 @@ id_ecdsa
 Brewfile.lock.json
 *.swp
 *.swo
+
+# Plugin manager auto-generated lock files (program kendisi yönetiyor)
+lazy-lock.json
+plugin/packer_compiled.lua
+
+# Template artıkları
+nvim/.config/nvim/README.md
