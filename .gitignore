@@ -1,0 +1,29 @@
+.DS_Store
+*.backup
+*.bak
+.dotfiles_backup/
+
+# Asla commit'lenmemesi gereken hassas dosyalar
+id_rsa
+id_ed25519
+id_ecdsa
+*.pem
+*.key
+.ssh/
+.netrc
+.aws/credentials
+.npmrc
+.env
+.env.*
+.zshrc.local
+.zshenv.local
+
+# zsh history & cache
+.zsh_history
+.zsh_sessions/
+.zcompdump*
+
+# Brewfile lock
+Brewfile.lock.json
+*.swp
+*.swo
