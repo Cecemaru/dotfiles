@@ -35,6 +35,9 @@ defaults write com.apple.screencapture disable-shadow -bool true
 defaults write NSGlobalDomain com.apple.trackpad.scaling -float 2.0
 defaults write -g com.apple.swipescrolldirection -bool true         # Natural scroll
 
+# ───── Menubar (sketchybar kullanıyoruz, native bar otomatik gizlensin) ─────
+defaults write NSGlobalDomain _HIHideMenuBar -bool true
+
 # ───── Misc ─────
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
