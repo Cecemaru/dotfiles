@@ -6,7 +6,6 @@ after-login-command = []
 
 # Aerospace başladığında JankyBorders + SketchyBar'ı otomatik başlat
 after-startup-command = [
-    'exec-and-forget borders',
     'exec-and-forget sketchybar',
 ]
 
