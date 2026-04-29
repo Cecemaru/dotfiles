@@ -42,40 +42,40 @@ return {
         telescope.load_extension("fzf")
 
         -- ============================================================
-        -- KEYMAPS — hepsi <leader>p ile başlar (Prime'ın "Project" namespace'i)
+        -- KEYMAPS — <leader>f* namespace ([F]ind)
         -- ============================================================
 
-        -- En çok kullanacağın: dosya bul (Ctrl-p VS Code'dan tanıyorsundur)
-        vim.keymap.set("n", "<leader>pf", builtin.find_files,
-            { desc = "[P]roject [F]iles" })
+        -- Dosya bul (Ctrl-p VS Code'dan tanıyorsundur)
+        vim.keymap.set("n", "<leader>ff", builtin.find_files,
+            { desc = "[F]ind [F]iles" })
 
         -- Sadece git'le track edilen dosyalar (node_modules vs hariç)
         vim.keymap.set("n", "<C-p>", builtin.git_files,
             { desc = "Git tracked files" })
 
-        -- LIVE GREP — proje içinde TÜM dosyalarda kelime ara (ripgrep ile)
-        vim.keymap.set("n", "<leader>ps", function()
+        -- Live grep (yazarken anlık eşleşme — en güçlü arama)
+        vim.keymap.set("n", "<leader>fg", builtin.live_grep,
+            { desc = "[F]ind by [G]rep" })
+
+        -- Grep — kelimeyi sor, projede ara
+        vim.keymap.set("n", "<leader>fs", function()
             builtin.grep_string({ search = vim.fn.input("Grep > ") })
-        end, { desc = "[P]roject [S]earch (kelime sor)" })
+        end, { desc = "[F]ind by [S]earch (kelime sor)" })
 
         -- Cursor altındaki kelimeyi proje içinde ara
-        vim.keymap.set("n", "<leader>pw", builtin.grep_string,
-            { desc = "[P]roject grep [W]ord" })
-
-        -- Live grep (yazarken anlık eşleşme)
-        vim.keymap.set("n", "<leader>pg", builtin.live_grep,
-            { desc = "[P]roject live [G]rep" })
+        vim.keymap.set("n", "<leader>fw", builtin.grep_string,
+            { desc = "[F]ind current [W]ord" })
 
         -- Açık buffer'lar arasında geç
-        vim.keymap.set("n", "<leader>pb", builtin.buffers,
-            { desc = "[P]roject [B]uffers" })
+        vim.keymap.set("n", "<leader>fb", builtin.buffers,
+            { desc = "[F]ind [B]uffers" })
 
         -- Vim help dökümanı ara
-        vim.keymap.set("n", "<leader>vh", builtin.help_tags,
-            { desc = "[V]im [H]elp" })
+        vim.keymap.set("n", "<leader>fh", builtin.help_tags,
+            { desc = "[F]ind [H]elp" })
 
         -- Recent files (geçmişte açtıkların)
-        vim.keymap.set("n", "<leader>?", builtin.oldfiles,
-            { desc = "Geçmiş dosyalar" })
+        vim.keymap.set("n", "<leader>fr", builtin.oldfiles,
+            { desc = "[F]ind [R]ecent files" })
     end,
 }
