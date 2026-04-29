@@ -3,7 +3,18 @@
 
 # Tray icon yerine sadece menubar emoji (opsiyonel)
 after-login-command = []
-after-startup-command = []
+
+# Aerospace başladığında JankyBorders + SketchyBar'ı otomatik başlat
+after-startup-command = [
+    'exec-and-forget borders',
+    'exec-and-forget sketchybar',
+]
+
+# Workspace değişince SketchyBar'a haber ver (highlight için)
+exec-on-workspace-change = [
+    '/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+]
 
 # Aerospace başladığında otomatik yeniden başlat (config değişince)
 start-at-login = true
@@ -124,3 +135,15 @@ alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
+
+# Volume kontrolü (service mode'dayken)
+down = 'volume down'
+up = 'volume up'
+shift-down = ['volume set 0', 'mode main']
+
+# ============================================================
+# Multi-monitor: workspace 2 ve 4 secondary monitör'e atanır
+# ============================================================
+[workspace-to-monitor-force-assignment]
+2 = 'secondary'
+4 = 'secondary'

@@ -15,7 +15,7 @@ warn() { echo -e "${Y}⚠${N}  $*"; }
 err()  { echo -e "${R}✗${N} $*" >&2; }
 
 # Stow paketleri (klasör adları)
-PACKAGES=(zsh git tmux nvim ghostty aerospace)
+PACKAGES=(zsh git tmux nvim ghostty aerospace borders sketchybar)
 
 # ============================================================
 # 1. Xcode Command Line Tools
