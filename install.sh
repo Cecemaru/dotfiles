@@ -67,7 +67,17 @@ fi
 ok "Powerlevel10k mevcut"
 
 # ============================================================
-# 5. GNU Stow ile symlink kur
+# 5. TPM (Tmux Plugin Manager)
+# ============================================================
+TPM_DIR="$HOME/.tmux/plugins/tpm"
+if [ ! -d "$TPM_DIR" ]; then
+    log "TPM (Tmux Plugin Manager) klonlanıyor…"
+    git clone --depth=1 https://github.com/tmux-plugins/tpm "$TPM_DIR"
+fi
+ok "TPM mevcut"
+
+# ============================================================
+# 6. GNU Stow ile symlink kur
 # ============================================================
 if ! command -v stow &>/dev/null; then
     err "stow bulunamadı (Brewfile'da olmalı)"; exit 1
@@ -100,7 +110,7 @@ for pkg in "${PACKAGES[@]}"; do
 done
 
 # ============================================================
-# 6. macOS defaults (opsiyonel)
+# 7. macOS defaults (opsiyonel)
 # ============================================================
 if [ -x "$DOTFILES_DIR/macos/defaults.sh" ]; then
     read -rp "$(echo -e ${Y}?${N} macOS defaults uygulansın mı? [y/N] )" ans
@@ -111,7 +121,7 @@ if [ -x "$DOTFILES_DIR/macos/defaults.sh" ]; then
 fi
 
 # ============================================================
-# 7. Final notlar
+# 8. Final notlar
 # ============================================================
 echo
 ok "Kurulum tamam!"
@@ -123,7 +133,10 @@ echo "        echo 'export GEMINI_API_KEY=\"...\"' > ~/.zshrc.local"
 echo "   3. SSH key'lerini yedekten geri yükle veya yenisini üret:"
 echo "        ssh-keygen -t ed25519 -C \"$(git config user.email)\""
 echo "   4. nvim'i aç, plugin'ler otomatik yüklenecek"
-echo "   5. AeroSpace'i Settings > Privacy & Security > Accessibility'den yetkilendir"
+echo "   5. tmux başlat, sonra prefix + I (Ctrl-b I) ile TPM plugin'lerini kur"
+echo "   6. pyenv için ihtiyacın olan Python versiyonunu kur:"
+echo "        pyenv install 3.12 && pyenv global 3.12"
+echo "   7. AeroSpace'i Settings > Privacy & Security > Accessibility'den yetkilendir"
 echo
 [ -d "$BACKUP_DIR" ] && [ -n "$(ls -A "$BACKUP_DIR" 2>/dev/null)" ] && \
     echo "💾 Yedekler: $BACKUP_DIR"

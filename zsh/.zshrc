@@ -119,14 +119,11 @@ alias datablast="tmuxinator start datablast"
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-export GOOGLE_CLOUD_PROJECT="gemini-cli-test-466800"
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 
-# Added by Antigravity
-export PATH="/Users/omerduzgun/.antigravity/antigravity/bin:$PATH"
-
-export CODEX_HOME="/Users/omerduzgun/projects/personal/spec-kit-test/.codex"
+# Antigravity (varsa)
+[ -d "$HOME/.antigravity" ] && export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
 # Local / machine-specific config (secrets, API keys) — git'e gitmez
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
