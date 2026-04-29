@@ -32,34 +32,56 @@ default-root-container-orientation = 'auto'
 # macOS native fullscreen'i devre dışı bırak (aerospace yönetsin)
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
-# Workspace'lere otomatik atama (örnekler — istediğin gibi düzenle)
-[[on-window-detected]]
-if.app-id = 'com.apple.Safari'
-run = 'move-node-to-workspace 2'
+# Workspace'lere otomatik atama
+# 1 = Arc        | 2 = Comet + Ghostty | 3 = Spotify | 4 = Slack + Obsidian
 
 [[on-window-detected]]
 if.app-id = 'company.thebrowser.Browser'  # Arc
-run = 'move-node-to-workspace 2'
-
-[[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
-if.app-id = 'com.spotify.client'
-run = 'move-node-to-workspace 9'
+if.app-id = 'ai.perplexity.comet'         # Comet (Perplexity browser)
+run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
-if.app-id = 'com.hnc.Discord'
-run = 'move-node-to-workspace 8'
+if.app-id = 'com.mitchellh.ghostty'       # Terminal
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'          # Spotify
+run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'   # Slack
+run = 'move-node-to-workspace 4'
+
+[[on-window-detected]]
+if.app-id = 'md.obsidian'                 # Obsidian
+run = 'move-node-to-workspace 4'
+
+# ───── Sistem dialog'ları → tiling DEĞİL, floating (modal'lar düzgün açılsın) ─────
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+if.window-title-regex-substring = 'Copy|Move|Get Info'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.calculator'
+run = 'layout floating'
 
 # Gaps
+# outer.top = sketchybar yüksekliği (32) + ufak boşluk (8) = 40
+# Böylece pencereler sketchybar'ı kapatmaz
 [gaps]
 inner.horizontal = 8
 inner.vertical = 8
 outer.left = 8
 outer.bottom = 8
-outer.top = 8
+outer.top = 40
 outer.right = 8
 
 # ============================================================
