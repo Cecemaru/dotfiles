@@ -1,0 +1,27 @@
+name: datablast
+root: ~/Projects/datablast
+
+windows:
+  - frontend:
+      layout: main-vertical
+      panes:
+        - cd frontend && nvim
+        - cd frontend && gemini
+  - backend:
+      layout: even-horizontal
+      panes:
+        - echo "gemini"
+        - echo "nvim"
+  #        - cd backend && gemini
+  #        - cd backend && nvim
+  - docs:
+      layout: even-horizontal
+      panes:
+        - cd docs && nvim
+        - cd docs && gemini
+  - server:
+      layout: even-horizontal
+      panes:
+        - cd frontend && npm run dev
+        - echo "Worker / backend / background process burada başlar"
+#        - cd backend && python3 manage.py runserver
