@@ -50,7 +50,24 @@ brew bundle --file="$DOTFILES_DIR/Brewfile"
 ok "Tüm paketler yüklü"
 
 # ============================================================
-# 4. GNU Stow ile symlink kur
+# 4. Oh-My-Zsh + Powerlevel10k
+# ============================================================
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    log "Oh-My-Zsh yükleniyor…"
+    RUNZSH=no KEEP_ZSHRC=yes \
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+ok "Oh-My-Zsh mevcut"
+
+P10K_DIR="$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
+if [ ! -d "$P10K_DIR" ]; then
+    log "Powerlevel10k klonlanıyor…"
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$P10K_DIR"
+fi
+ok "Powerlevel10k mevcut"
+
+# ============================================================
+# 5. GNU Stow ile symlink kur
 # ============================================================
 if ! command -v stow &>/dev/null; then
     err "stow bulunamadı (Brewfile'da olmalı)"; exit 1
@@ -83,7 +100,7 @@ for pkg in "${PACKAGES[@]}"; do
 done
 
 # ============================================================
-# 5. macOS defaults (opsiyonel)
+# 6. macOS defaults (opsiyonel)
 # ============================================================
 if [ -x "$DOTFILES_DIR/macos/defaults.sh" ]; then
     read -rp "$(echo -e ${Y}?${N} macOS defaults uygulansın mı? [y/N] )" ans
@@ -94,7 +111,7 @@ if [ -x "$DOTFILES_DIR/macos/defaults.sh" ]; then
 fi
 
 # ============================================================
-# 6. Final notlar
+# 7. Final notlar
 # ============================================================
 echo
 ok "Kurulum tamam!"
