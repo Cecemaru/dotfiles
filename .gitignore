@@ -34,3 +34,7 @@ plugin/packer_compiled.lua
 
 # Template artıkları
 nvim/.config/nvim/README.md
+
+# Tmux plugins are managed at runtime by TPM into ~/.tmux/plugins/
+# (legacy path used by tmux.conf), not from the dotfiles repo.
+tmux/.config/tmux/plugins/
