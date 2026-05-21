@@ -6,7 +6,7 @@ return {
     config = function()                 -- Plugin yüklenince çalışacak fonksiyon
         require("catppuccin").setup({
             flavour = "mocha",          -- latte / frappe / macchiato / mocha
-            transparent_background = false,   -- true yap istersen ghostty opacity görünür
+            transparent_background = true,    -- terminal arka planı (ghostty opacity) görünür
             integrations = {            -- diğer pluginleri otomatik renklendir
                 cmp = true,
                 gitsigns = false,       -- bu pluginleri kullanmıyoruz, false
