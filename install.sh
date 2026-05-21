@@ -49,6 +49,12 @@ log "Brewfile paketleri yükleniyor (uzun sürebilir)…"
 brew bundle --file="$DOTFILES_DIR/Brewfile"
 ok "Tüm paketler yüklü"
 
+# uv tool: specify-cli (Brewfile değil, uv yönetiyor)
+if command -v uv &>/dev/null; then
+    log "uv tool: specify-cli kuruluyor…"
+    uv tool install specify-cli || warn "specify-cli kurulumu başarısız (devam ediliyor)"
+fi
+
 # ============================================================
 # 4. Oh-My-Zsh + Powerlevel10k
 # ============================================================
