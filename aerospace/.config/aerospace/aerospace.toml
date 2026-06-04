@@ -36,8 +36,8 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 # 1 = Arc        | 2 = Comet + Ghostty | 3 = Spotify | 4 = Slack + Obsidian
 
 [[on-window-detected]]
-if.app-id = 'company.thebrowser.Browser'  # Arc
-run = 'move-node-to-workspace 1'
+if.app-id = 'org.qutebrowser.qutebrowser'  # qutebrowser
+run = ['layout tiling', 'move-node-to-workspace 1']
 
 [[on-window-detected]]
 if.app-id = 'ai.perplexity.comet'         # Comet (Perplexity browser)
